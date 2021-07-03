@@ -1,0 +1,71 @@
+
+h1 { 
+    color: #111; 
+    font-family: 'Courier New', sans-serif; 
+    font-size: 80px; 
+    margin-top: 30px;
+    margin-left: 8px;
+    letter-spacing: -1px; 
+    line-height: 1; 
+    text-align: center; 
+    background-color: white;
+
+}
+
+tm-div-middle {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;    
+    right: 0;
+    width: 400px;
+    height: 500px;
+    margin: auto;
+    display: inline-block;
+}
+
+/* div {
+	width: 500px;
+	height: 200px;	
+	position: absolute;
+	top: 1px;
+	bottom: 0;
+    left: 0;
+	right:0;
+    margin-bottom: 10cm;
+    margin: auto;
+
+}
+
+.divheader {
+    width: 200px;
+    height: 60px;
+    position: relative;
+    margin-bottom: 5cm;
+    margin-left: 7mm;
+
+}
+
+.newuser {
+    width: 60px;
+    height: 20px;
+    margin-top: 70px;
+    margin-left: 28px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.forgotpassword {
+    width: 90px;
+    height: 20px;
+    font-size: 13px;
+    margin-top: 70px;
+    margin-left: 120px;
+    padding-right: 1px;
+    cursor: pointer;
+}
+
+button {
+    width: 60px;
+    margin-left: 110px;
+} */
