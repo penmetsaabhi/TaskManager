@@ -11,6 +11,7 @@ import { UsersService } from './users.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegisrationComponent } from './user-regisration/user-regisration.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AuthGuardGuard, AuthGuardTask } from './auth-guard.guard';
 
 
 @NgModule({
@@ -28,7 +29,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [UsersService],
+  providers: [UsersService, AuthGuardGuard, AuthGuardTask],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

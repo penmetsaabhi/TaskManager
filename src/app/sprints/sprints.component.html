@@ -1,0 +1,51 @@
+<div class="relative bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex justify-between items-center border-b-2 border-gray-100 py-6 md:justify-start md:space-x-10">
+        <div class="flex items-center justify-start lg:w-0 lg:flex-1">
+          <a href="#">
+            <h1 class='text-5xl'> TaskManager</h1>
+          </a>
+        </div>
+        <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+          <a href="#" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-yellow-600 hover:bg-yellow-700">
+            Logout
+          </a>
+        </div>
+      </div>
+    </div>
+
+
+ <!-- This is an example component -->
+<div style = 'margin-top: 10px;' class="overflow-hidden flex flex-col">
+	<div class='max-w-lg bg-yellow-500 shadow-md rounded-lg overflow-hidden mx-auto'>
+		<div class="py-4 px-20 mt-3">
+			<div class="flex flex-col mb-8">
+				<h2 class="text-gray-700 font-semibold text-2xl tracking-wide mb-4">Want to join a new Sprint ? First you need to have a sprintId.</h2>
+				<p class="text-gray-500 text-base">You can get the sprint Id from  any exsisting memmber in a sprint :) </p>
+			</div>
+                <input class="shadow appearance-none border border-green-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" placeholder="SprintId">
+			<div class="py-4">
+				<a href="#" class="block tracking-widest uppercase text-center shadow bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">Make Request</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div style = "width: 200px; margin:10px;" class="py-4">
+    <a href="#" class="block uppercase text-center shadow bg-yellow-500 hover:bg-yellow-700 focus:shadow-outline focus:outline-none text-white text-xs py-3 px-10 rounded">+ Create Sprints</a>
+</div>
+<div class="flex flex-row flex-wrap">
+<div *ngFor="let sprints of getSprints()" style= 'width: 10cm; margin : 10px; cursor:pointer; border: solid ;' (click)="goToTasks(sprints.Id)">
+	<div class=' bg-white shadow-md rounded overflow-hidden'>
+		<div class="py-8 px-8 mt-3">
+			<div class="flex flex-col mb-4">
+				<h2 class="text-gray-700 font-semibold text-2xl tracking-wide mb-2">{{sprints.title}}</h2>
+			</div>
+			<div class="flex flex-wrap content-around">
+                <div style="margin : 5px;" class="bg-gray-200"> Owner : {{sprints.userName}} </div>
+                <div style="margin : 5px;" class="bg-gray-200"> Id : {{sprints.Id}} </div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

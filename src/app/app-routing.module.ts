@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Route, RouterModule, Routes } from '@angular/router';
-import { AuthGuardGuard } from './auth-guard.guard';
+import { AuthGuardGuard, AuthGuardTask } from './auth-guard.guard';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { SprintsComponent } from './sprints/sprints.component';
 import { TasksComponent } from './tasks/tasks.component';
@@ -12,7 +12,7 @@ const routes: Route[] = [
   { path:'registration', component: UserRegisrationComponent},
   { path:'forgotpassword', component: ForgotPasswordComponent},
   { path : 'sprints', component : SprintsComponent, canActivate : [AuthGuardGuard]},
-  { path : 'sprints/tasks', component : TasksComponent, canActivate : [AuthGuardGuard]}
+  { path : 'sprints/tasks', component : TasksComponent, canActivate : [AuthGuardTask]}
 ];
 
 @NgModule({

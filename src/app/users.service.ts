@@ -26,4 +26,8 @@ export class UsersService {
     return this.httpClient.post(this.basic_Url + '/logIn', user, {headers : this.headers1});
   }
 
+  getTasks(sprintId:string) {
+    return this.httpClient.get(this.basic_Url + 'getTasks/' + sprintId, {headers :this.headers1});
+  }
+
 }

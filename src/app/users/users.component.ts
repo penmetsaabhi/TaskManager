@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { UsersService } from '../users.service';
 import { Sprint, User } from '../Models/sprints';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {Router} from "@angular/router";
 import { global } from '../GlobalVariables';
+import { HttpResponse } from '../Models/HttpResponse';
+import { LOG_IN_CONSTANTS } from '../Models/constants';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  @ViewChild('errorText')
+  errorText!: ElementRef;
+  
+
   constructor(private router: Router, private userService:UsersService) { 
   }
   sprints:any ;
@@ -17,27 +24,29 @@ export class UsersComponent implements OnInit {
     userName : new FormControl('', [Validators.required, Validators.minLength(5)]),
     password : new FormControl('', [Validators.required, Validators.minLength(8)])
   });
-  clickMessage = '';
   user: any | undefined;
+  isUserValidated: boolean | undefined;
   ngOnInit(): void {
-      this.userService.getUsers('abhirav').subscribe(Data => {
-        this.sprints = Data;
-      });
       localStorage.setItem('isAuthenticated', 'false');
-    }
-
-  onSubmit() {
-    console.log("hi");
-    this.userService.validateLogIn(this.userLogInForm.value).subscribe(Data => {
-      this.user = Data;
-      console.log(JSON.stringify(Data));
-      global.setAuthentication(true);
-      localStorage.setItem('isAuthenticated', 'true');
-      this.router.navigate(['/sprints']);
-    });
   }
-  onClickMe(userName: string, password:string) {
-    this.clickMessage = userName;
+
+  onSigIn() {
+    console.log("hi");
+    this.userService.validateLogIn(this.userLogInForm.value)
+    .subscribe(
+      (response) => {
+      this.user = response;
+
+      localStorage.setItem('isAuthenticated', 'true');
+      localStorage.setItem('userData', JSON.stringify(this.user));
+      this.isUserValidated = true;
+      this.router.navigate(['/sprints']);
+    },
+     (error) => {
+      let httpError: HttpResponse = error;
+      this.isUserValidated = false;
+      this.errorText.nativeElement.textContent = "*" + httpError.error.message;
+    });
   }
   goToRegistration() {
     this.router.navigate(['/registration']);
